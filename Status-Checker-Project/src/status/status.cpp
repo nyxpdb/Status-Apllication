@@ -20,7 +20,7 @@ std::string check_status_from_url()
     HINTERNET hInternet = InternetOpen("StatusChecker", INTERNET_OPEN_TYPE_DIRECT, nullptr, nullptr, 0);
     if (!hInternet) return "error";
 
-    HINTERNET hFile = InternetOpenUrl(hInternet,"https://raw.githubusercontent.com/nyxpdb/Status-Apllication/main/status.txt",nullptr, 0, INTERNET_FLAG_RELOAD, 0);
+    HINTERNET hFile = InternetOpenUrl(hInternet,"https://raw.githubusercontent.com/nyxpdb/Status-Apllication/refs/heads/main/Status-Checker-Project/src/raw/status.txt",nullptr, 0, INTERNET_FLAG_RELOAD, 0);
 
     if (!hFile)
     {
