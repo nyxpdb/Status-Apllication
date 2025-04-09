@@ -20,12 +20,10 @@ std::string check_status_from_url()
     HINTERNET hInternet = InternetOpen("StatusChecker", INTERNET_OPEN_TYPE_DIRECT, nullptr, nullptr, 0);
     if (!hInternet) return "error";
 
-    HINTERNET hFile = InternetOpenUrl(
-        hInternet,
-        "https://raw.githubusercontent.com/nyxpdb/Status-Apllication/main/status.txt",
-        nullptr, 0, INTERNET_FLAG_RELOAD, 0);
+    HINTERNET hFile = InternetOpenUrl(hInternet,"https://raw.githubusercontent.com/nyxpdb/Status-Apllication/main/status.txt",nullptr, 0, INTERNET_FLAG_RELOAD, 0);
 
-    if (!hFile) {
+    if (!hFile)
+    {
         InternetCloseHandle(hInternet);
         return "error";
     }
@@ -34,7 +32,8 @@ std::string check_status_from_url()
     DWORD bytesRead;
     std::string result;
 
-    if (InternetReadFile(hFile, buffer, sizeof(buffer) - 1, &bytesRead)) {
+    if (InternetReadFile(hFile, buffer, sizeof(buffer) - 1, &bytesRead)) 
+    {
         buffer[bytesRead] = '\0';
         result = std::string(buffer);
         result.erase(result.find_last_not_of(" \n\r\t") + 1);
@@ -48,22 +47,26 @@ std::string check_status_from_url()
 
 bool status_check()
 {
-    if (!has_internet_connection()) {
+    if (!has_internet_connection()) 
+    {
         MessageBoxA(nullptr, MSG_NO_INTERNET, "Network Error", MB_ICONERROR | MB_OK);
         return false;
     }
 
     std::string status = check_status_from_url();
 
-    if (status == "offline") {
+    if (status == "offline") 
+    {
         MessageBoxA(nullptr, MSG_OFFLINE, "System Status", MB_ICONERROR | MB_OK);
         return false;
     }
-    else if (status == "dev") {
+    else if (status == "dev")
+    {
         MessageBoxA(nullptr, MSG_DEV, "System Status", MB_ICONWARNING | MB_OK);
         return false;
     }
-    else if (status != "online") {
+    else if (status != "online") 
+    {
         MessageBoxA(nullptr, MSG_ERROR, "System Status", MB_ICONERROR | MB_OK);
         return false;
     }
