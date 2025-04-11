@@ -60,7 +60,7 @@ auto status_check() -> bool
         MessageBoxA(nullptr, MSG_OFFLINE, "System Status", MB_ICONERROR | MB_OK);
         return false;
     }
-    else if (status == "dev")
+    else if (status == "maintenance")
     {
         MessageBoxA(nullptr, MSG_DEV, "System Status", MB_ICONWARNING | MB_OK);
         return false;
