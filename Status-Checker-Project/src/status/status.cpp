@@ -10,7 +10,7 @@ const char* MSG_OFFLINE = "The system is currently offline.\nO sistema está atu
 const char* MSG_DEV = "The system is in development mode.\nO sistema está em modo de desenvolvimento.";
 const char* MSG_ERROR = "Failed to check the system status.\nFalha ao verificar o status do sistema.";
 
-bool has_internet_connection()
+auto has_internet_connection() -> bool
 {
     return InternetCheckConnection("http://www.google.com", FLAG_ICC_FORCE_CONNECTION, 0);
 }
@@ -45,7 +45,7 @@ std::string check_status_from_url()
     return result;
 }
 
-bool status_check()
+auto status_check() -> bool
 {
     if (!has_internet_connection()) 
     {
