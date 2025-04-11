@@ -7,7 +7,7 @@
 
 const char* MSG_NO_INTERNET = "No internet connection.\nSem conexão com a internet.";
 const char* MSG_OFFLINE = "The system is currently offline.\nO sistema está atualmente offline.";
-const char* MSG_DEV = "The system is in development mode.\nO sistema está em modo de desenvolvimento.";
+const char* MSG_DEV = "The system is in maintenance mode.\nO sistema está em modo de manuntencao.";
 const char* MSG_ERROR = "Failed to check the system status.\nFalha ao verificar o status do sistema.";
 
 auto has_internet_connection() -> bool
